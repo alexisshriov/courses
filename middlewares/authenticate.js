@@ -1,4 +1,4 @@
-const jwt = require("../ultils/jwt");
+const jwt = require("../utils/jwt");
 
 function asureAuth(req, res, next){
     if(!req.headers.authorization) {
