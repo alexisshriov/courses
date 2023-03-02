@@ -35,8 +35,43 @@ async function createCourse(req, res) {
 
     return courses
   }
+  
+  async function updateCourse(req, res) {
+    const {id, body} = req
+
+    if(req.files.miniature){
+        const imagePath = image.getFilePath(req.files.miniature)
+        body.miniature = imagePath
+    }
+
+    Courses.findByIdAndUpdate({_id: id}, body, (error, course) => {
+        if (error) {
+            res.status(400).send({ msg: "Error al actualizar curso" });
+          } else {
+            res.status(200).send({ msg: "Actualizacion correcta" });
+          }
+    })
+
+
+    const course = Course.find(id)
+  }
+
+  async function deleteCourse (req, res) {
+    const { id } = req.params
+
+    Course.findByIdAndDelete(id, (error) => {
+        if (error) {
+            res.status(400).send({ msg: "Error al eliminar curso" });
+          } else {
+            res.status(200).send({ msg: "Curso eliminado correctamente" });
+          }
+    })
+
+  }
 
   module.exports = {
     createCourse,
     getCourses,
+    updateCourse,
+    deleteCourse
   };

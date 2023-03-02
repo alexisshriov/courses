@@ -8,6 +8,7 @@ const md_upload = multiparty({ uploadDir: "./uploads/course" });
 const api = express.Router();
 api.post("/course", [md_auth.asureAuth, md_upload], courseController.createCourse);
 api.get("/course", [md_auth.asureAuth], courseController.getCourses);
-// api.post("/auth/refresh_access_token", AuthController.refreshAcessToken);
+api.patch("/course/:id", [md_auth.asureAuth], courseController.updateCourse);
+api.delete("/course/:id", [md_auth.asureAuth], courseController.deleteCourse)
 
 module.exports = api;
