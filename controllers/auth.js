@@ -1,7 +1,7 @@
 
 const bcrypt = require("bcryptjs")
 const User = require("../models/user")
-const jwt = require("../ultils/jwt")
+const jwt = require("../utils/jwt")
 
 
 function register(req, res){

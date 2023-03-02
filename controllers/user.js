@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs")
 const User = require("../models/user")
-const image = require("../ultils/image")
+const image = require("../utils/image")
 
 async function getMe(req, res){
     const { user_id } = req.user;
